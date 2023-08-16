@@ -1,7 +1,17 @@
+using BulkWebApp.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// after create data folder set application Db context class here to use Sql Server 
+//code change here 
+builder.Services.AddDbContext<ApplicationDbContext>
+    (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnect")));
+
+//code end here
 
 var app = builder.Build();
 
