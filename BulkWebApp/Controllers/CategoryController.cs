@@ -37,6 +37,8 @@ namespace BulkWebApp.Controllers
             
         }
 
+
+        //go to edit page with id
         public IActionResult Edit( int? id)
         {
             if(id==null || id == 0)
@@ -51,6 +53,7 @@ namespace BulkWebApp.Controllers
             }
             return View(CategoryFromDb);
         }
+        // edit update method
         [HttpPost]
         public IActionResult Edit(Category obj)
         {
@@ -62,6 +65,37 @@ namespace BulkWebApp.Controllers
                 return RedirectToAction("Index");
             }
             return View();
+
+
+        }
+
+        //go to delete page with id
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            //Category CategoryFromDb = _db.Categories.FirstOrDefault(c => c.Id == id);
+             Category CategoryFromDb = _db.Categories.Find(id);
+            if (CategoryFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(CategoryFromDb);
+        }
+        // Delete method
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePost(int? id)
+        {
+            Category? obj = _db.Categories.Find(id);
+            if(obj == null)
+            {
+                return NotFound();
+            }
+            _db.Categories.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
 
 
         }
