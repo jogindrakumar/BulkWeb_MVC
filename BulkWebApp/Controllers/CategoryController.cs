@@ -22,6 +22,10 @@ namespace BulkWebApp.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
+            //if(obj.Name == obj.DisplayOrder.ToString())
+            //{
+            //    ModelState.AddModelError("name", "The Display order Cannot exactly match the Name.");
+            //}
             if(ModelState.IsValid)
             {
                 _db.Categories.Add(obj);
