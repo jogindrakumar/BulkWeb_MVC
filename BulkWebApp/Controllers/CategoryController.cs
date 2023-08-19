@@ -43,8 +43,8 @@ namespace BulkWebApp.Controllers
             {
                 return NotFound();
             }
-            //Category category = _db.Categories.FirstOrDefault(c => c.Id == id);
-            Category CategoryFromDb = _db.Categories.Find(id);
+            Category CategoryFromDb = _db.Categories.FirstOrDefault(c => c.Id == id);
+           // Category CategoryFromDb = _db.Categories.Find(id);
             if(CategoryFromDb == null)
             {
                 return NotFound();
@@ -54,13 +54,10 @@ namespace BulkWebApp.Controllers
         [HttpPost]
         public IActionResult Edit(Category obj)
         {
-            //if(obj.Name == obj.DisplayOrder.ToString())
-            //{
-            //    ModelState.AddModelError("name", "The Display order Cannot exactly match the Name.");
-            //}
+         
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
+                _db.Categories.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
