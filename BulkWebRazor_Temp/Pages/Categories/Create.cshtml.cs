@@ -21,6 +21,7 @@ namespace BulkWebRazor_Temp.Pages.Categories
         public IActionResult OnPost(Category obj) {
         _db.Categories.Add(Category);
             _db.SaveChanges();
+            TempData["success"] = "Category Added Successfully";
             return RedirectToPage("Index");
         }
     }
