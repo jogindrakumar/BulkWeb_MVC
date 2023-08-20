@@ -6,7 +6,7 @@
             <h2 class="text-primary">Category List</h2>
         </div>
         <div class="col-6 text-end">
-            <a asp-page="Categories/create"  class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create New Category</a>
+            <a asp-page="/categories/create"  class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create New Category</a>
 
         </div>
     </div>
@@ -30,12 +30,12 @@
                 <td>@obj.DisplayOrder</td>
                 <td>
                     <div class="w-50 btn-group" role="group">
-                        <a asp-page="categories/edit" 
+                        <a asp-page="/categories/edit" 
                            asp-route-id="@obj.Id"
                            class="btn btn-primary mx-2">
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
-                        <a asp-page="categories/delete"  asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                        <a asp-page="/categories/delete"  asp-route-id="@obj.Id" class="btn btn-danger mx-2">
                             <i class="bi bi-trash3"></i> Danger
                         </a>
                     </div>
