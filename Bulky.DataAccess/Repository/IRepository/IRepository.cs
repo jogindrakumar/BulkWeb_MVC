@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bulky.DataAccess.Repository.IRepository
 {
-    internal interface IRepository <T> where T : class
+    public interface IRepository <T> where T : class
     {
         //T - Category
 
@@ -16,7 +16,7 @@ namespace Bulky.DataAccess.Repository.IRepository
         void Add(T entity);
         //void Update(T entity);
         void Remove(T entity);
-        void RemoveRange();
+        void RemoveRange(IEnumerable<T> entity);
 
     }
 }
